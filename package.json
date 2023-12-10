@@ -1,0 +1,25 @@
+{
+  "name": "bank-statement-processor",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "csv-parser": "^2.3.2",
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "multer": "^1.4.4",
+    "typescript": "^4.5.5",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/lodash": "^4.14.202",
+    "@types/multer": "^1.4.11",
+    "@types/node": "^16.18.68",
+    "@types/xml2js": "^0.4.14"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Statement Processor</title>
+</head>
+<body>
+  <h1>Bank Statement Processor</h1>
+
+  <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+    <label for="csvFile">Upload CSV File:</label>
+    <input type="file" name="file" id="csvFile" accept=".csv" required>
+    <br>
+    <label for="xmlFile">Upload XML File:</label>
+    <input type="file" name="file" id="xmlFile" accept=".xml" required>
+    <br>
+    <button type="button" onclick="processFiles()">Process Files</button>
+  </form>
+
+  <div id="report">
+    <!-- Report will be displayed here -->
+  </div>
+
+  <form action="/download" download="report.csv" method="get" enctype="multipart/form-data" id="downloadLink">
+    <button id="downloadButton">Download Report</button>
+  </form>
+
+  <script>
+    async function processFiles() {
+      const formData = new FormData(document.getElementById('uploadForm'));
+
+      try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        // Update the content of the report div
+        const reportDiv = document.getElementById('report');
+        reportDiv.innerHTML = generateReportHTML(data.invalidRecords);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    function generateReportHTML(invalidRecords) {
+      return invalidRecords.map(record => `<p>${record.Reference}: ${record.Description}</p>`).join('');
+    }
+  </script>
+</body>
+</html>
