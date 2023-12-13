@@ -15,10 +15,10 @@ This Node.js application processes bank customer statement records provided in C
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/MherTumanyan/AMA.git
+   git clone https://github.com/MherTumanyan/Bank-Statement-Processor.git
 
 2. Install dependencies:
-    cd AMA
+    cd Bank-Statement-Processor
     npm install
 
 3. Start the server:
